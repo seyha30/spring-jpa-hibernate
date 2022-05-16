@@ -3,9 +3,10 @@ package com.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+
+import java.util.*;
 
 @Entity(name = "sys_role")
 public class Role {
@@ -13,7 +14,7 @@ public class Role {
 	@GeneratedValue
 	private Integer roleId;
 	private String roleName;
-	@OneToOne
-	private User user;
+	@ManyToMany(mappedBy = "roles")
+	private List<User> users;
 
 }
